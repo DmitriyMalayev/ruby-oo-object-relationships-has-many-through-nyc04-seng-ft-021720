@@ -1,27 +1,27 @@
 require "pry"
 
 class Customer
-   attr_accessor :name, :age 
-   
-   @@all = [] 
+    attr_accessor :name, :age 
 
-   def initialize(name, age)
-    @name = name 
-    @age = age 
-    @@all << self 
-   end 
+    @@all = [] 
 
-   def self.all
-    @@all  
-   end 
+    def initialize(name, age)
+        @name = name 
+        @age = age
+        @@all << self  
+    end  
 
-   def new_meal(waiter, total, tip=0)
-        Meal.new(waiter, self, total, tip)
-   end
-   
+    def self.all
+        @@all  
+    end 
+
+    def new_meal(waiter, total, tip)
+      Meal.new(waiter, self, total, tip)
+    end
+    
     def meals
-        Meal.all.select do |meal|
-        meal.customer == self 
+        Meal.all.select do |food|
+            food.customer == self 
         end  
     end 
 
@@ -30,5 +30,8 @@ class Customer
             meal.waiter  
         end 
     end 
+
+    
+
+
 end 
-  
