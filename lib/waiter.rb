@@ -21,17 +21,16 @@ class Waiter
 
     def meals
         Meal.all.select do |person|
-        person.waiter == self 
-        binding.pry
+        person.waiter == self
         end  
     end 
 
     def best_tipper
-       meals.max do |a, b|
-        a.tip <=> b.tip 
-    end.customer    
-        end 
-    end 
+        meals.max_by do |a| a.tip  
+        end.customer    
+    end
+    
+end 
  
 
 
